@@ -1,6 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Mushroom from '../sprites/Mushroom'
+import Rectangle from '../objects/Rectangle'
 
 export default class extends Phaser.State {
   init () {}
@@ -15,6 +16,14 @@ export default class extends Phaser.State {
     banner.fill = '#77BFA3'
     banner.smoothed = false
     banner.anchor.setTo(0.5)
+    
+    this.rectangle = new Rectangle({
+      game: this.game,
+      x: 22,
+      y: 22,
+      width: 22,
+      height: 22
+    })
 
     this.mushroom = new Mushroom({
       game: this.game,
@@ -22,6 +31,8 @@ export default class extends Phaser.State {
       y: this.world.centerY,
       asset: 'mushroom'
     })
+    
+    this.game.add.existing(this.rectangle)
 
     this.game.add.existing(this.mushroom)
   }
