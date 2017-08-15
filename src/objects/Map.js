@@ -2,10 +2,8 @@ import Phaser from 'phaser'
 
 export default class Map {
     constructor({size}) {
-        super(size)
         this.size = size
-        this.wallGrid = Uint8Array(size * size);
-        
+        this.wallGrid = new Uint8Array(size * size);
         this.wallGrid = this.randomise(this.size, this.wallGrid)
         return this.wallGrid
     }

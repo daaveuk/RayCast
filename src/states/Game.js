@@ -1,30 +1,20 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Mushroom from '../sprites/Mushroom'
-import Rectangle from '../objects/Rectangle'
+import Map from '../objects/Map'
 
 export default class extends Phaser.State {
   init () {}
   preload () {}
 
   create () {
-    const bannerText = 'Phaser + ES6 + Webpack'
-    let banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText)
-    banner.font = 'Bangers'
-    banner.padding.set(10, 16)
-    banner.fontSize = 40
-    banner.fill = '#77BFA3'
-    banner.smoothed = false
-    banner.anchor.setTo(0.5)
     
-    this.rectangle = new Rectangle({
-      game: this.game,
-      x: 22,
-      y: 22,
-      width: 22,
-      height: 22
+    this.map = new Map({
+      size: 64
     })
-
+    
+    console.log(this.map)
+    
     this.mushroom = new Mushroom({
       game: this.game,
       x: this.world.centerX,
@@ -32,8 +22,6 @@ export default class extends Phaser.State {
       asset: 'mushroom'
     })
     
-    this.game.add.existing(this.rectangle)
-
     this.game.add.existing(this.mushroom)
   }
 
